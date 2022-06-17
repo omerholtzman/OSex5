@@ -1,0 +1,48 @@
+yali.ekstein, omer.holtzman
+Yali Ekstein (212537807), Omer Holtzman (212422794)
+EX: 5
+
+FILES:
+
+
+1. Answer:
+PID namespaces isolate the process ID numbers space. Each different process
+will have different set of PIDs available to use. Processes in different PID
+namsepaces can have the same PIDs (Such as same file names can be in different
+folders). PID namespaces allow containers to resume or suspend a set of
+processes and migrate a set of processes to a new host while the processes
+inside the container has same IDs.
+
+2. Answer:
+Mount namespaces define file system can a set of processes accesses. It helps
+us Isolate different processes by seperating which files a process can see.
+Each set of processes wil lbe able to see different single-directory
+hierarchies.
+
+3. Answer:
+Cgroups can help us limiting the available resources to a collection of
+processes - such as limiting the CPU the proceeses can use, limiting the
+memory, number of processes, network bandwidth, etc...
+
+4. Answer:
+Both fork and clone calls create a new "child" process from a "parent" process.
+The clone call is an upgraded version of the fork call - it provides more
+precise control over the data - allows the child process to be placed in
+different namespaces, allows to share the file system information, open files
+and signal handlers using a different flags.
+
+5. Answer:
+"chroot" command is used to change the root directory of a process and its
+child processes. Every process or command on linux has current working
+directory called root. The command chroot changes the root directory for the
+running process as well as its' child processes.
+
+
+6. Answer:
+The procfs is a special filesystem in linux OS that presents information about
+processes from the kernel in a hierarchical file-like structures. The procfs
+provides us a more standardized method for dynamically accessing process dat
+held in the kernel rather than the tracing methods or direct accessing the
+kernel memory.
+An example use is to get all the CPU information using the "/proc/cpuinfo" to
+get all cpu information.

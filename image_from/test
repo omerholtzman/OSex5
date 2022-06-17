@@ -1,0 +1,12 @@
+#!/bin/bash
+hostName=$1
+maxPids=$2
+if [ -d /sys/fs/cgroup/pids/ ]; then echo "PASSED: mkdir"; else echo "FAILED: mkdir"; fi
+if find /sys/fs/ -perm 0755 | wc -l | grep 6 >> /dev/null; then echo "PASSED: permissions"; else echo "FAILED: permissions"; fi
+cd /sys/fs/cgroup/pids/
+if hostname | grep "$hostName" >> /dev/null; then echo "PASSED: hostname"; else echo "FAILED: hostname"; fi
+if grep 1 cgroup.procs >> /dev/null; then echo "PASSED: cgroup.procs"; else echo "FAILED: cgroup.procs"; fi
+if grep "$maxPids" pids.max >> /dev/null; then echo "PASSED: pids.max"; else echo "FAILED: pids.max"; fi
+if grep 1 notify_on_release >> /dev/null; then echo "PASSED: notify_on_release"; else echo "FAILED: notify_on_release"; fi
+exit
+
